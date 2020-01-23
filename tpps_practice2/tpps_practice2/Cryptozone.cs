@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CryptoCoins
 {
+
     public class Cryptozone
     {
+        public List<Commonwealth> countries = new List<Commonwealth>();
         private List<Commonwealth> commonwealths;
         public List<Commonwealth> Commonwealths
         {
@@ -28,13 +30,13 @@ namespace CryptoCoins
         // links every city to its neighbours
         public void setCityNeighbours()
         {
-            foreach (Commonwealth currentCountry in this.commonwealths)
+            foreach (Commonwealth currentCountry in commonwealths)
             {
                 foreach (City currentCity in currentCountry.Cities)
                 {
                     if (currentCity.getNeighboursCount() == NumberOfNeighbours)
                         continue;
-                    foreach (Commonwealth anotherCountry in this.commonwealths)
+                    foreach (Commonwealth anotherCountry in commonwealths)
                     {
                         foreach (City anotherCity in anotherCountry.Cities)
                         {
@@ -54,7 +56,7 @@ namespace CryptoCoins
         // checks if the entered countries are neighbours to each other
         public bool checkCountriesConnection()
         {
-            foreach (Commonwealth currentCountry in this.commonwealths)
+            foreach (Commonwealth currentCountry in commonwealths)
             {
                 foreach (City currentCity in currentCountry.Cities)
                 {
@@ -63,26 +65,21 @@ namespace CryptoCoins
                         if (String.Compare(currentCity.CommonwealthName, neighbour.CommonwealthName) != 0)
                         {
                             currentCountry.linkedFlag = true;
-                            break;
+                            return true;
                         }
                     }
-                    if (currentCountry.linkedFlag)
-                        break;
                 }
-                if (!currentCountry.linkedFlag)
-                {
-                    Console.WriteLine("Bad configuration of the countries. There's no connection of one of the commonwealth to the others");
-                    return false;
-                }
+  
             }
-            return true;
+            Console.WriteLine("Bad configuration of the countries. There's no connection of one of the commonwealth to the others");
+            return false;
         }
 
         // distributes one representative portion of coins to the cities' neighbours
         public void distributeCoins()
         {
             // distribute coins to neighbours in 'new coins' lists
-            foreach (Commonwealth currentCountry in this.commonwealths)
+            foreach (Commonwealth currentCountry in commonwealths)
             {
                 foreach (City currentCity in currentCountry.Cities)
                 {
@@ -91,7 +88,7 @@ namespace CryptoCoins
             }
 
             // merge old and new ones
-            foreach (Commonwealth currentCountry in this.commonwealths)
+            foreach (Commonwealth currentCountry in commonwealths)
             {
                 foreach (City currentCity in currentCountry.Cities)
                 {
@@ -100,18 +97,22 @@ namespace CryptoCoins
             }
         }
 
-        public void sortCountries()
+        public void sortCountries(int days)
         {
-            CommonwealthComparer cc = new CommonwealthComparer();
-
-            this.commonwealths.Sort(cc);
+            // CommonwealthComparer cc = new CommonwealthComparer();
+            List<Commonwealth> SortedList = commonwealths.OrderBy(o => o.days).ToList();
+            // this.commonwealths.Sort(cc);
+            commonwealths = SortedList;
+            foreach (Commonwealth country in commonwealths)
+            {
+                Console.WriteLine(country.Name + " " + days);
+            }
         }
 
         // checks complete cities and countries
         public bool checkCoinsDistribution(int days)
         {
-            bool toReturn = true;
-            foreach (Commonwealth currentCountry in this.commonwealths)
+            foreach (Commonwealth currentCountry in commonwealths)
             {
                 int completeCityCount = 0;
                 foreach (City currentCity in currentCountry.Cities)
@@ -124,20 +125,17 @@ namespace CryptoCoins
                 if (completeCityCount == currentCountry.Cities.Count && !currentCountry.completeFlag)
                 {
                     currentCountry.completeFlag = true;
-                    Console.WriteLine(currentCountry.Name + " " + days);
+                    currentCountry.days = days;
+                    Console.WriteLine(" DAYS " + days);
+                    //countries.Add(currentCountry);
+                    //Console.WriteLine(currentCountry.Name + " " + days);
                 }
                 if (completeCityCount != currentCountry.Cities.Count)
-                    toReturn = false;
+                    return false;
             }
-            return toReturn;
+
+            return true;
         }
     }
 
-    public class CommonwealthComparer : IComparer<Commonwealth>
-    {
-        public int Compare(Commonwealth x, Commonwealth y)
-        {
-            return String.Compare(x.Name, y.Name);
-        }
-    }
 }

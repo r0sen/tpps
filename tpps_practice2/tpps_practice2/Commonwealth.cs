@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoCoins
 {
-    public class Commonwealth
+    public class Commonwealth 
     {
         private List<City> cities;
         public List<City> Cities
@@ -40,6 +40,7 @@ namespace CryptoCoins
         }
         public bool linkedFlag;
         public bool completeFlag;
+        public int days;
 
         public Commonwealth(string name, int xl, int yl, int xh, int yh)
         {
@@ -50,7 +51,7 @@ namespace CryptoCoins
             this.yh = yh;
             linkedFlag = false;
             completeFlag = false;
-
+            days = 0;
             cities = new List<City>();
             for (int i=xl; i<=xh; i++)
             {
@@ -60,5 +61,8 @@ namespace CryptoCoins
                 }
             }
         }
+
+
     }
+
 }

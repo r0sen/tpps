@@ -8,6 +8,8 @@ namespace CryptoCoins
 {
     class Program
     {
+        private const  int maxcoord = 10;
+        private const int mincoord = 1;
         static void Main(string[] args)
         {
             while (true)
@@ -96,7 +98,7 @@ namespace CryptoCoins
                 {
                     return false;
                 }
-                ez.sortCountries();
+
                 int days = 0;
                 while (true)
                 {
@@ -105,6 +107,7 @@ namespace CryptoCoins
                     ez.distributeCoins();
                     days++;
                 }
+                ez.sortCountries(days);
                 caseNumber++;
             }
 

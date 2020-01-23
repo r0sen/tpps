@@ -4,3 +4,9 @@ C:\Users\Администратор\Desktop\OPT\tpps_practice2\tpps_practice2\bi
 C:\Users\Администратор\Desktop\OPT\tpps_practice2\tpps_practice2\bin\Debug\tpps_practice2.pdb
 C:\Users\Администратор\Desktop\OPT\tpps_practice2\tpps_practice2\obj\Debug\tpps_practice2.exe
 C:\Users\Администратор\Desktop\OPT\tpps_practice2\tpps_practice2\obj\Debug\tpps_practice2.pdb
+C:\Users\Администратор\Documents\GitHub\tpps\tpps_practice2\tpps_practice2\bin\Debug\tpps_practice2.exe.config
+C:\Users\Администратор\Documents\GitHub\tpps\tpps_practice2\tpps_practice2\obj\Debug\tpps_practice2.exe
+C:\Users\Администратор\Documents\GitHub\tpps\tpps_practice2\tpps_practice2\obj\Debug\tpps_practice2.pdb
+C:\Users\Администратор\Documents\GitHub\tpps\tpps_practice2\tpps_practice2\bin\Debug\tpps_practice2.exe
+C:\Users\Администратор\Documents\GitHub\tpps\tpps_practice2\tpps_practice2\bin\Debug\tpps_practice2.pdb
+C:\Users\Администратор\Documents\GitHub\tpps\tpps_practice2\tpps_practice2\obj\Debug\tpps_practice2.csprojResolveAssemblyReference.cache
